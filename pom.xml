@@ -9,8 +9,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<compiler.source>1.11</compiler.source>
-		<compiler.target>1.11</compiler.target>
+		<compiler.source>1.8</compiler.source>
+		<compiler.target>1.8</compiler.target>
 		<rdf4j.version>3.7.1</rdf4j.version>
 		<log4j.version>2.10.0</log4j.version>
 	</properties>
