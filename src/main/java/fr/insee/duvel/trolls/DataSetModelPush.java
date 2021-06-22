@@ -12,19 +12,22 @@ import java.io.InputStream;
 import java.util.regex.Pattern;
 
 /**
- *
+ * Process for pushing ttl dataset to Rdf repository
  */
 public class DataSetModelPush {
 
     private static Logger logger = LogManager.getLogger(DataSetModelPush.class);
 
+    public static final String ARGS_SEPARATOR = "|";
+
     public static void main(String[] args) throws Exception {
 
-        String file = System.getenv("INPUT_FILE");
-        String sparqlEndpoint = System.getenv("ARGS").split(Pattern.quote("|"))[0];
-        String repo = System.getenv("ARGS").split(Pattern.quote("|"))[1];
+        final String file = System.getenv("INPUT_FILE");
+        final String[] argsFromEnv = System.getenv("ARGS").split(Pattern.quote(ARGS_SEPARATOR));
+        final String sparqlEndpoint = argsFromEnv[0];
+        final String repo = argsFromEnv[1];
 
-        Repository db = new HTTPRepository(sparqlEndpoint, repo);
+        final Repository db = new HTTPRepository(sparqlEndpoint, repo);
 
         // Open a connection to the database
         try (RepositoryConnection conn = db.getConnection()) {
